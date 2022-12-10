@@ -65,8 +65,8 @@ def register(request):
             new_user.username = form.cleaned_data.get('email')
             new_user.save()
 
-            send_register_email(form.cleaned_data.get('email'), 'register')
-            return HttpResponse('Success!')
+            # send_register_email(form.cleaned_data.get('email'), 'register')
+            return redirect('users:login')
 
     context = {'form': form}
     return render(request, 'users/register.html', context)
