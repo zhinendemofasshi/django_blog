@@ -16,7 +16,7 @@ The main features that have currently implemented are:
 - Visitors can register new accounts.
 - Every user can edit its user profile and add an avatar.
 
-![截屏2022-12-10 21.58.59](/Users/ikeyang/Library/Application Support/typora-user-images/截屏2022-12-10 21.58.59.png)
+![截屏2022-12-10 21.58.59](https://raw.githubusercontent.com/zhinendemofasshi/django_blog/main/static/截屏2022-12-10 22.19.53.png)
 
 
 
