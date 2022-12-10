@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static category %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home Page{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'users/bulma.css' %}">
+</head>
+<body>
+<div>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    Home
+                </a>
+                {% get_category_list as category_list %}
+                {% for category in category_list %}
+                    <a class="navbar-item" href="{% url 'blog:category_list' category.id %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    {% if user.is_authenticated %}
+                        <div class="buttons">
+                            <a class="button is-primary" href="{% url 'users:user_profile' %}">
+                                <strong> {{ request.user.username }}</strong>
+                            </a>
+                            <a href="{% url 'users:logout' %}" class="button is-primary">Exit</a>
+                        </div>
+                    {% else %}
+                        <div class="buttons">
+                            <a class="button is-primary" href="{% url 'users:register' %}">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="{% url 'users:login' %}">
+                                Log in
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<section class="mt-3">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                {% block left_section %}
+                    {% for post in post_list %}
+                        <div class="box mt-5">
+                            <h1 class="is-size-5 has-text-weight-bold">
+                                <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
+                            </h1>
+                            <div class="is-size-7 has-text-grey pt-1 pb-1">
+                                <span class="mr-3">author: {{ post.owner }}</span>
+                                <br/>
+                                <span>add: {{ post.add_date }}</span>
+
+                            </div>
+                            <p class="mt-3">{{ post.desc|truncatechars:50 }}</p>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+            <div class="column is-4">
+                {% block right_section %}
+                    <div class="box">
+                        Welcome to my Blog
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% block footer %}
+    <footer class="footer">
+        <div class="container has-text-centered">
+            You have reached the bottom of the page.
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>

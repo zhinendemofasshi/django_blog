@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <title>Login</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'users/bulma.css' %}">
+</head>
+<body>
+<div class="container" style="margin-top: 10em">
+    {% block content %}
+        <div class="box">
+        <h1 class="is-uppercase has-text-centered has-text-weight-bold is-size-2">
+            Ike's Blog
+            <br>
+            <span class="tag">Login</span>
+        </h1>
+        <hr class="dropdown-divider">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button is-link is-fullwidth" style="margin-top: 1em" type="submit" value="submit">
+        </form>
+    </div>
+    {% endblock %}
+</div>
+</body>
+</html>
