@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-
+# you can regard models as scheme in the database
 class UserProfile(models.Model):
     USER_GENDER_TYPE = (
         ('male', 'male'),

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+# this is the URL of the pages belonging to users application
 app_name = 'users'
 urlpatterns = [
     path('login/', views.login_view, name='login'),

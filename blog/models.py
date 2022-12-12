@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+# models are like scheme of the database
 
 
 class Category(models.Model):
