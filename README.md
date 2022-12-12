@@ -22,7 +22,7 @@ The main features that have currently implemented are:
 
 We upload our code to github and then create a Django test action so that we can test a Django web application. In this way, testing becomes very convenient.The result is as belows.
 
-![截屏2022-12-12 13.43.12](/Users/ikeyang/Library/Application Support/typora-user-images/截屏2022-12-12 13.43.12.png)
+![截屏2022-12-12 13.43.12](https://raw.githubusercontent.com/zhinendemofasshi/django_blog/main/static/testing.png)
 
 ## Calaboration
 
